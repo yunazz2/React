@@ -38,25 +38,26 @@ const TodoList = () => {
             'Content-Type' : 'application/json'
         },
         body : JSON.stringify(data)
+      }
+
+      // fetch를 사용하여 POST 요청 보내기
+      fetch(url, init)
+          .then(response => {
+              // 서버 응답을 JSON 형식으로 파싱
+              console.log(response);
+              return response.text()      // Promise
+          })
+          .then((data) => {
+              console.log(data);
+              window.location.reload()
+          })
+          .catch(error => {
+          // 오류 처리
+          console.error('Request failed:', error);
+          });
     }
 
-        // fetch를 사용하여 POST 요청 보내기
-        fetch(url, init)
-            .then(response => {
-                // 서버 응답을 JSON 형식으로 파싱
-                console.log(response);
-                return response.text()      // Promise
-            })
-            .then((data) => {
-                console.log(data);
-                window.location.reload()
-            })
-            .catch(error => {
-            // 오류 처리
-            console.error('Request failed:', error);
-            });
-    }
-
+    // 할 일 삭제
     const clickDelete = (no) => {
       const url = `http://192.168.30.119:8080/todos/${no}`
       const init = {
@@ -80,13 +81,14 @@ const TodoList = () => {
           });
     }
 
+
     return (
       <div className='todolist'>
           {
             TodoListData.map((todos, index) => {
               return (
                 <div className='list'>
-                  <label  className={todos.status===1  ? 'labelChecked' : 'labelCheck'} onClick={() => clickLabel(todos.no, todos.status, todos.name)}></label>
+                  <label className={todos.status === 1 ? 'labelChecked' : 'labelCheck'} onClick={() => clickLabel(todos.no, todos.status, todos.name)}></label>
                   <div>{todos.name}</div><button onClick={() => clickDelete(todos.no)}>삭제</button>
                 </div>
               )

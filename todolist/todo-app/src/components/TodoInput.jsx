@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 const TodoInput = () => {
 
+  // 할 일 추가
   const insert = () => {
-
     const inputvalue = document.getElementById('inputcell').value
 
     // fetch를 사용하여 POST 요청 보내기
