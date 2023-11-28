@@ -7,7 +7,7 @@ const TodoList = () => {
     const [TodoListData, setTodoListData] = useState([])
     // TodoListData를 빈 배열로 만들고 시작
 
-    useEffect(() => {
+    useEffect(() => { // 컴포넌트의 라이프사이클 이벤트를 처리하기 위한 hook
       // fetch를 사용하여 GET 요청 보내기
       fetch('http://192.168.30.119:8080/todos')
       .then(response => {
