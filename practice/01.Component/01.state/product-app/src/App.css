@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+/* 공통 */
+* {
+  color: rgb(60, 60, 60);
+  font-size: 14px;
 }
+img { width: 100%; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* 상품 상세 */
+.product-detail {
+  display: inline-flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  column-gap: 100px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.product-detail .item {
+  width: 400px;
+}
+
+.product-detail .info {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.text-group {
+  display: flex;
+  padding: 10px 0;
+}
+select {
+  width: 100%;
+  font-size: 14px;
+  line-height: 30px;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  outline: none;
+}
+
+.btn {
+  background-color: rgb(5, 150, 190);
   color: white;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  margin: 0 2px;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.btn.btn-lg {
+  width: 100%;
+  min-height: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn.btn-outline {
+  border: 2px solid gray;
+  background-color: white;
+  color: gray;
+}
+
+.btn:hover {
+  background-color: rgb(61, 182, 219)
+}
+
+.btn:active {
+  background-color: rgb(4, 126, 160);
+}
+
+.txt-pt {
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.gap-1 {gap: 10px;}
+.flex.gap-2 {gap: 20px;}
+.flex.gap-3 {gap: 30px;}
+
+.quantity {
+  width: 40px;
+  font-size: 14x;
+  line-height: 20px;
+  height: 20px;
+  text-align: center;
 }

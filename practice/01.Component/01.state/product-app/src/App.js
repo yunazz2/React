@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import ProductDetail from './components/ProductDetail';
 
 function App() {
+
+  // 객체 가져옴
+  const product = {
+    productId : 'P100001',
+    name : '베이직 폴라 니트',
+    price : 42000,
+    quantity : 1,
+    img : 'https://i.imgur.com/1vpSkbW.png'
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ProductDetail product={product}/>  {/* props 전달 */}
     </div>
   );
 }
