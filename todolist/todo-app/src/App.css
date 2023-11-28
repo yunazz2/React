@@ -1,25 +1,31 @@
+/* 초기화 */
 * {
   text-align: center;
   background-color: rgb(240, 240, 240);
 }
 
+/* 전체 버튼 스타일 */
 button {
   border: none;
   border-radius: 20px;
   width: 80px;
-  height: 35px;
+  height: 40px;
   background-color: rgb(152, 217, 233);
   cursor: pointer;
 }
 
+/* 버튼에 마우스 올렸을 시 */
 button:hover {
-  background-color: rgb(175, 239, 255);
+  background-color: rgb(174, 227, 240);
 }
 
+/* 버튼 클릭 시 */
 button:active {
   background-color: rgb(137, 195, 209);
 }
 
+
+/* 요소들을 flex로 주기 위한 컨테이너 */
 .container {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -27,6 +33,8 @@ button:active {
   justify-content: center;
 }
 
+
+/* 실제 컨테이너 */
 .todocontainer {
   width: 600px;
   height: 800px;
@@ -34,19 +42,50 @@ button:active {
   background-color: white;
 }
 
+
+.todoheader {
+  padding: 30px;
+  background-color: white;
+}
+
+/* todoinput 시트 전체 */
 .todoinput {
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
-
-.todocell {
+/* input 칸 */
+.inputcell {
+  margin-right: 1cap;
   width: 300px;
   height: 30px;
-  border: 1px solid black;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: white;
+}
+/* input 칸 선택 시 */
+.inputcell:focus {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
 }
 
+/* todolist */
+.todolist {
+  padding: 30px;
+  background-color: white;
+}
+
+.todo {
+  background-color: white;
+}
+
+/* 푸터(전체 삭제, 전체 완료) */
 .todofooter {
+  padding: 30px;
   display: flex;
   justify-content: space-around;
+  background-color: white;
 }
