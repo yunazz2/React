@@ -1,8 +1,21 @@
+* {
+  color: rgb(45, 45, 45);
+}
+
+body {
+  background-color: rgb(140, 140, 140);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   width: 480px;
   min-height: 600px;
   margin: 100px auto;
-  border: 1px solid black;
+  border: 1px solid rgb(140, 140, 140);
   border-radius: 20px;
   background-color: rgb(241, 241, 241);
 }
@@ -15,7 +28,7 @@
 .form {
   display: flex;
   justify-content: space-between;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 20px 10px 20px;
 }
 
 .input {
@@ -31,12 +44,12 @@
 .form .input {
   border: none;
   border-bottom: 1px solid black;
-  padding-left: 12px;
+  /* padding-left: 12px; */
   outline: none;
 }
 
 .form .btn {
-  width: 17%;
+  width: 80px;
 }
 
 .btn {
@@ -49,6 +62,8 @@
   cursor: pointer;
   background-color: rgb(5, 160, 190);
   color: white;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .btn:hover {
@@ -64,17 +79,21 @@
   overflow-y: auto;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
-
 .todoItem {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 10px 10px 10px;
+}
+
+.todoItem.active {
+  background-color: rgb(141, 141, 141);
+  border-radius: 10px;
+}
+
+.todoItem.active .btn:hover {
+  background-color: rgb(100, 100, 100);
 }
 
 .todoItem .item {
@@ -93,6 +112,8 @@ ul {
   border: 1px dashed rgb(75, 75, 75);
   background-color: white;
   border-radius: 50%;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .todoItem input:checked ~ label {
@@ -108,7 +129,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 10px 10px 10px;
+  margin: 20px 10px 20px 10px;
 }
 
 /* 스크롤바 */
@@ -137,9 +158,6 @@ ul {
                      color-stop(0.86, rgb(28,58,148))); */
 }
 
-body {
-  background-color: black;
-}
 
 /* 배경 */
 /* body {

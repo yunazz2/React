@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem';
-import './TodoList.css';
 
 const TodoList = () => {
 
