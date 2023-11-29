@@ -112,9 +112,9 @@ const TodoContainer = () => {
 
     // return을 안 쓴다면 (item) => {item} 이렇게 안써줘도 된대..
     // 위에 할 일 완료 처리 후 코드랑 동일 함. 아래처럼 한 번에 써도 가능
-    const sortedTodoList
-          = todoList.map((item) => item.no === todo.no ? {...item, status : !item.status} : item)
-                    .sort((a, b) => a.status = b.status == 0 ? b.no - a.no : a.status - b.status)
+    const sortedTodoList 
+          = todoList.map((item) => item.no === todo.no ? {...item, status: !item.status} : item)
+                    .sort((a, b) => a.status - b.status == 0 ? b.no - a.no : a.status - b.status)
 
     setTodoList(sortedTodoList)
     
@@ -160,6 +160,38 @@ const TodoContainer = () => {
 
   }
 
+  // 전체 완료
+  const onCompleteAll = () => {
+    
+    // PUT 요청
+    // 전체완료
+    // /todos   : data : { no : -1 }
+    const data = {
+      no: -1,
+    }
+
+    const init = {
+      method: 'PUT',
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+
+    // 할일 전체 완료 [PUT]
+    // ➡ '수정 완료 메시지'
+    fetch('http://192.168.30.119:8080/todos',init)
+      .then( ( response ) => response.text() )
+      .then( ( data ) => console.log(data) )
+      .catch( (error) => console.log(error) );
+
+    const sortedTodoList 
+          = todoList.map((item) => ({...item, status : 1}))
+                    .sort((a, b) => a.status - b.status == 0 ? b.no - a.no : a.status - b.status)
+
+    setTodoList(sortedTodoList)
+  }
+
 
   // 화면
   return (
@@ -167,7 +199,7 @@ const TodoContainer = () => {
         <TodoHeader/>
         <TodoInput onSubmit={onSubmit} onChange={onChange} input={input}/>  {/* onSubmit이라는 속성으로 onSubmin을 props로 TodoInput에 내려준다. */}
         <TodoList todoList={todoList} onToggle={onToggle} onDelete={onDelete}/>
-        <TodoFooter/>
+        <TodoFooter onDeleteAll={onDeleteAll} onCompleteAll={onCompleteAll}/>
     </div>
   )
 }
