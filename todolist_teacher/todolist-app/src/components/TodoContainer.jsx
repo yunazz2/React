@@ -192,13 +192,47 @@ const TodoContainer = () => {
     setTodoList(sortedTodoList)
   }
 
+  // 할일 수정
+  const onUpdate = (todo) => {
+    console.log('할일 수정 처리');
+    console.log(todo);
+
+    
+    // PUT 요청
+    const data = {
+      no: todo.no,
+      name: todo.name,
+      status: todo.status,
+    }
+
+    const init = {
+      method: 'PUT',
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+
+    // 할일 수정 [PUT]
+    // ➡ '수정 완료 메시지'
+    fetch('http://192.168.30.119:8080/todos',init)
+      .then( ( response ) => response.text() )
+      .then( ( data ) => console.log(data) )
+      .catch( (error) => console.log(error) );
+
+    const sortedTodoList 
+          = todoList.sort((a, b) => a.status - b.status == 0 ? b.no - a.no : a.status - b.status)
+
+    setTodoList(sortedTodoList)
+
+  };
 
   // 화면
   return (
     <div className="container">
         <TodoHeader/>
         <TodoInput onSubmit={onSubmit} onChange={onChange} input={input}/>  {/* onSubmit이라는 속성으로 onSubmin을 props로 TodoInput에 내려준다. */}
-        <TodoList todoList={todoList} onToggle={onToggle} onDelete={onDelete}/>
+        <TodoList todoList={todoList} onToggle={onToggle} onDelete={onDelete} onUpdate={onUpdate}/>
         <TodoFooter onDeleteAll={onDeleteAll} onCompleteAll={onCompleteAll}/>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoItem = ({todo, onToggle, onDelete}) => {
+const TodoItem = ({todo, onToggle, onDelete, onUpdate}) => {
 
   let {no, name, status} = todo
   status = status == 1 ? true : false;
@@ -15,10 +15,22 @@ const TodoItem = ({todo, onToggle, onDelete}) => {
           익명 함수로 사용하지 않으면, 결과값(?)만 반환되기 때문에.
         */}
         <label htmlFor={todo.no}></label>
-        <span>{todo.name}</span>
-      </div>
-      <div className="item">
-        <button className='btn' onClick={() => onDelete(no)}>삭제</button>
+        {/* 할일 */}
+        <input type="text" 
+                   id={`name-${todo.no}`}
+                   className='input'
+                   // value={todo.name}
+                   defaultValue={todo.name}
+                  />
+        </div>
+        <div className="item">
+          <button className='btn btn-sm' 
+                  onClick={ () => {
+                              todo.name = document.getElementById(`name-${todo.no}`).value;
+                              onUpdate(todo);
+                          }}>✅</button>
+          <button className='btn btn-sm' onClick={ () => onDelete(no) }>❌</button>
+
         {/* onClick={onDelete(no)} 그냥 이 형태로 넘기면 안된다~! 함수 형태로 넘겨야 한다~ */}
       </div>
     </li>
