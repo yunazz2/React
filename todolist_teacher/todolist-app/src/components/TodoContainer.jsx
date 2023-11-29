@@ -141,6 +141,24 @@ const TodoContainer = () => {
   
 
   // 전체 삭제
+  const onDeleteAll = () => {
+    // [DELETE] /todos/-1
+    // DELETE 요청
+    const init = {
+      method: 'DELETE',
+    };
+
+    // 전체 할일 삭제 [DELETE]
+    // ➡ '삭제 완료 메시지'
+    fetch(`http://192.168.30.119:8080/todos/-1`,init)
+      .then( ( response ) => response.text() )
+      .then( ( data ) => console.log(data) )
+      .catch( (error) => console.log(error) );
+
+    // 삭제된 할일 항목 제거
+    setTodoList( [] )
+
+  }
 
 
   // 화면
