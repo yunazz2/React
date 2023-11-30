@@ -1,4 +1,4 @@
-package main.java.com.joeun.server.dto;
+package com.joeun.server.dto;
 
 import java.util.Date;
 

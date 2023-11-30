@@ -1,4 +1,4 @@
-package main.java.com.joeun.server.mapper;
+package com.joeun.server.mapper;
 
 import java.util.List;
 

@@ -1,15 +1,18 @@
-package main.java.com.joeun.server.service;
+package com.joeun.server.service;
 
 import java.util.List;
 
-import main.java.com.joeun.server.dto.Board;
-import main.java.com.joeun.server.mapper.BoradMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.joeun.server.dto.Board;
+import com.joeun.server.mapper.BoardMapper;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
     @Autowired
-    private BoradMapper boradMapper;
+    private BoardMapper boradMapper;
     
     @Override
     public List<Board> list() throws Exception {

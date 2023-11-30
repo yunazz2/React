@@ -1,10 +1,10 @@
-package main.java.com.joeun.server.service;
+package com.joeun.server.service;
 
 import java.util.List;
-import main.java.com.joeun.server.dto.Board;
+import com.joeun.server.dto.Board;
 
 
-interface BoardService {
+public interface BoardService {
 
     // 게시글 목록
     public List<Board> list() throws Exception;

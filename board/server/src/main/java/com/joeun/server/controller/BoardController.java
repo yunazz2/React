@@ -1,4 +1,4 @@
-package main.java.com.joeun.server.controller;
+package com.joeun.server.controller;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.joeun.server.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
-import main.java.com.joeun.server.dto.Board;
+import com.joeun.server.dto.Board;
+import com.joeun.server.service.BoardService;
 
 @Slf4j
 @RestController
