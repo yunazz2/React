@@ -1,8 +1,19 @@
 import React from 'react'
+import { Link, useParams } from 'react-router-dom'
 
+// ⛄ 게시글 조회
 const BoardReadContainer = () => {
+
+  const {no} = useParams()
+
   return (
-    <div>BoardReadContainer</div>
+    <div>
+        <h1>게시글 조회</h1>
+        <h3>번호 : {no}</h3>
+        <Link to="/boards">목록</Link>
+        <hr />
+        <Link to={`/boards/update/${no}`}>수정</Link>
+    </div>
   )
 }
 
