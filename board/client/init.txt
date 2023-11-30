@@ -1,0 +1,7 @@
+1. board 폴더 생성
+
+2. npx create-react-app client
+
+3. npm install react-router-dom
+
+4. npm install axios
