@@ -8,7 +8,7 @@ const BoardInsertContainer = () => {
 
   const navigate = useNavigate()
 
-  const onIsert = async (title, writer, content) => {
+  const onInsert = async (title, writer, content) => {
     try {
       const response = await boards.insert(title, writer, content)
 
@@ -26,7 +26,7 @@ const BoardInsertContainer = () => {
 
   return (
     <>
-      <BoardInsertForm onInsert={onIsert} />
+      <BoardInsertForm onInsert={onInsert} />
     </>
   )
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import BoardInsertContainer from '../containers/BoardInsertContainer'
+import BoardList from '../components/BoardList'
 
 const Home = () => {
   return (
