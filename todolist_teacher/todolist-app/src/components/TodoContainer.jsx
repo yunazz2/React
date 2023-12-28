@@ -231,7 +231,7 @@ const TodoContainer = () => {
   return (
     <div className="container">
         <TodoHeader/>
-        <TodoInput onSubmit={onSubmit} onChange={onChange} input={input}/>  {/* onSubmit이라는 속성으로 onSubmin을 props로 TodoInput에 내려준다. */}
+        <TodoInput onSubmit={onSubmit} onChange={onChange} input={input}/>  {/* onSubmit이라는 속성으로 onSubmit을 props로 TodoInput에 내려준다. */}
         <TodoList todoList={todoList} onToggle={onToggle} onDelete={onDelete} onUpdate={onUpdate}/>
         <TodoFooter onDeleteAll={onDeleteAll} onCompleteAll={onCompleteAll}/>
     </div>
