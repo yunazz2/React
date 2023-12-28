@@ -1,3 +1,4 @@
+-- todo 테이블 생성
 CREATE TABLE `todo` (
   `no` int NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
