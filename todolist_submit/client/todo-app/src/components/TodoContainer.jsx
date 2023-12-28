@@ -15,7 +15,7 @@ const TodoContainer = () => {
 
     // ✅ Mount, Update 되는 부분
     // ⭐ 할 일 목록 요청 [GET]
-    fetch('http://192.168.30.119:8080/todos')
+    fetch('http://localhost:3000/todos')
       .then((response) => response.json()) // Promise(프로미스)
       .then((data) => setTodoList(data))
       .catch((error) => console.log(error));
@@ -51,7 +51,7 @@ const TodoContainer = () => {
     };
 
     // 새로 등록된 할 일 데이터
-    fetch('http://192.168.30.119:8080/todos',init)
+    fetch('http://localhost:3000/todos',init)
       .then((response) => response.json()) // Promise(프로미스)
       .then((data) => setTodoList([data, ...todoList]))
       // state로 관리하고있는게 todoList 배열이예요
@@ -89,7 +89,7 @@ const TodoContainer = () => {
     }
 
     // 할 일 status 수정
-    fetch('http://192.168.30.119:8080/todos',init)
+    fetch('http://localhost:3000/todos',init)
       .then((response) => response.text())
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
@@ -128,7 +128,7 @@ const TodoContainer = () => {
       method : 'DELETE',
     }
 
-    fetch(`http://192.168.30.119:8080/todos/${no}`,init)
+    fetch(`http://localhost:3000/todos/${no}`,init)
       .then((response) => response.text())
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
@@ -150,7 +150,7 @@ const TodoContainer = () => {
 
     // 전체 할일 삭제 [DELETE]
     // ➡ '삭제 완료 메시지'
-    fetch(`http://192.168.30.119:8080/todos/-1`,init)
+    fetch(`http://localhost:3000/todos/-1`,init)
       .then( ( response ) => response.text() )
       .then( ( data ) => console.log(data) )
       .catch( (error) => console.log(error) );
@@ -180,7 +180,7 @@ const TodoContainer = () => {
 
     // 할일 전체 완료 [PUT]
     // ➡ '수정 완료 메시지'
-    fetch('http://192.168.30.119:8080/todos',init)
+    fetch('http://localhost:3000/todos',init)
       .then( ( response ) => response.text() )
       .then( ( data ) => console.log(data) )
       .catch( (error) => console.log(error) );
@@ -215,7 +215,7 @@ const TodoContainer = () => {
 
     // 할일 수정 [PUT]
     // ➡ '수정 완료 메시지'
-    fetch('http://192.168.30.119:8080/todos',init)
+    fetch('http://localhost:3000/todos',init)
       .then( ( response ) => response.text() )
       .then( ( data ) => console.log(data) )
       .catch( (error) => console.log(error) );

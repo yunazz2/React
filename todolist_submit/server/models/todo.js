@@ -4,10 +4,10 @@ class Todo extends Model {
   static initiate(sequelize) {
     Todo.init(
       {
-       no: {
+        no: {
           type: DataTypes.INTEGER,
-          primaryKey: true,
           autoIncrement: true,
+          primaryKey: true,
         },
         name: {
           type: DataTypes.STRING,
@@ -15,7 +15,8 @@ class Todo extends Model {
         },
         status: {
           type: DataTypes.INTEGER,
-          allowNull: false,
+          allowNull: true,
+          defaultValue: '0'
         },
         reg_date: {
           type: 'TIMESTAMP',

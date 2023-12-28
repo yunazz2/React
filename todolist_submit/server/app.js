@@ -1,15 +1,23 @@
 const express = require('express');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const dotenv = require('dotenv');
 const path = require('path');
 const { sequelize } = require('./models');      // ✅ 시퀄라이즈
+const cors = require('cors'); // cors 미들웨어 추가
 
 // dotenv 라이브러리를 사용하여 환경 변수를 로드하는 부분
 // 이 메소드를 호출하면 프로젝트 루트에 위치한 .env 파일의 환경 변수가 process.env 객체에 추가됩니다.
-// dotenv.config();
+dotenv.config();
 
 // 👩‍💻 라우터 모듈 import
+const indexRouter = require('./routes/index');
 const todoRouter = require('./routes/todo');
 
 const app = express();
+
+app.use(cors());
 
 // 포트 설정: 환경 변수에서 PORT를 가져오고, 없을 경우 기본값으로 3000 사용
 app.set('port', process.env.PORT || 3000);
@@ -25,12 +33,14 @@ sequelize.sync({ force: false })
   });
 
 // 뷰 엔진 설정: Pug를 사용하도록 설정
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
+// 로깅 미들웨어 설정: 개발 환경에서는 dev 모드로 로그를 출력
+app.use(morgan('dev'));
 
 // 정적 파일 제공 미들웨어 설정: public 폴더를 정적 파일 제공 디렉토리로 설정
-app.use('/', express.static(path.join(__dirname, 'client/todo-app/build')));
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 // JSON 파싱 미들웨어 설정
 // - JSON 형식의 요청 본문을 파싱
@@ -39,16 +49,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // cookie-parser 미들웨어를 사용하여 쿠키를 파싱하는 부분
+// process.env.COOKIE_SECRET는 .env 파일이나 환경 변수에서 설정한 비밀 키를 사용
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Express 애플리케이션에 세션 미들웨어 설정
 app.use(session({
   resave: false,                            // 세션 데이터가 변경되지 않으면 서버에 다시 저장하지 않음
   saveUninitialized: false,                 // 초기화되지 않은 세션을 저장소에 저장하지 않음
+  secret: process.env.COOKIE_SECRET,        // 세션 식별을 위한 비밀 키
+
+  // 세션 쿠키 설정
+  cookie: {
+    httpOnly: true,                         // 브라우저에서 쿠키에 접근할 때만 가능하도록 httpOnly 속성 사용
+    secure: false,                          // HTTPS가 아닌 환경에서도 쿠키 전송 허용
+  },
+  name: 'session-cookie',     // 세션 쿠키의 이름 설정
 }));
 
 
 // 👩‍💻 라우터 설정
-app.use('/', todoRouter);
+app.use('/', indexRouter);
+app.use('/todos', todoRouter);
 
 // 404 오류 처리 미들웨어
 app.use((req, res, next) => {
